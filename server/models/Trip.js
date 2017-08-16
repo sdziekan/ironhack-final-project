@@ -1,42 +1,31 @@
 const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-//revise variable types for travelers and viewers should be arrays?
 const TripSchema = new Schema({
-  tripName: {
+  name: {
     type: String,
-    required: [true, "tripName is required"]
+    required: [true, "type is required"]
   },
-  _creator: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true
-  },
-  travelers: {
+  email: {
     type: String,
     required: [true, "email is required"]
   },
-  viewers: {
-    type: String,
-    required: [true, "password is required"]
-  },
-  startDate: {
-    type: Date
-  },
-  endDate: {
-    type: Date
-  },
-  location: {
+  participants: [
+    {
+      type: String
+    }
+  ],
+  activitiesComments: {
     type: String
   },
-  tripStatus: {
-    type: String,
-    enum: ["Upcoming", "Dream", "Past"],
-    default: "Dream"
+  lodgingComments: {
+    type: String
   },
-  travelerStatus: {
-    type: String,
-    enum: ["no answer", "going", "not going"]
+  transportationComments: {
+    type: String
+  },
+  currency: {
+    type: String
   }
 });
 module.exports = mongoose.model("Trip", TripSchema);

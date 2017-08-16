@@ -1,7 +1,22 @@
 const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-const TransportationSchema = new Schema({
+//type variable might need some work
+const ItemSchema = new Schema({
+  trip: {
+    type: Schema.Types.ObjectId,
+    ref: "Trip",
+    required: true
+  },
+  name: {
+    type: String,
+    required: [true, "name is required"]
+  },
+  group: {
+    type: String,
+    required: [true, "group is required"],
+    enum: ["Activities", "Lodging", "Transportation"]
+  },
   type: {
     type: String,
     required: [true, "type is required"],
@@ -13,29 +28,21 @@ const TransportationSchema = new Schema({
       "Train",
       "Boat/Ferry",
       "Hiking/Walking",
-      "other"
+      "other",
+      "Food"
     ]
   },
-  name: {
-    type: String,
-    required: [true, "name is required"]
-  },
-  startDate: {
+  startTime: {
     type: Date
   },
   endTime: {
-    type: Time
+    type: Date
   },
   location: {
     type: String
   },
   cost: {
     type: Number
-  },
-  booked: {
-    type: String,
-    enum: ["not booked", "booked"],
-    default: "not booked"
   },
   upVotes: {
     type: Number
@@ -46,20 +53,11 @@ const TransportationSchema = new Schema({
   url: {
     type: String
   },
-  commentsPublic: {
-    type: String
-  },
-  commentsPrivate: {
-    type: String
-  },
-  reservationNumber: {
-    type: String
-  },
   status: {
     type: String,
-    enum: ["potential", "confirmed", "archived"],
+    enum: ["potential", "booked", "archived"],
     default: "potential"
   }
 });
 
-module.exports = mongoose.model("Transportation", TransportationSchema);
+module.exports = mongoose.model("Item", ItemSchema);
