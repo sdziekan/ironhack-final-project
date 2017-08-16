@@ -1,0 +1,30 @@
+[
+  {
+    "trip": "5994483d6149280e9f8380d8",
+    "name": "Hertz - rental car",
+    "group": "Transportation",
+    "type": "Car - rental",
+    "startTime": "",
+    "endTime": "",
+    "location": "150 Broadway, NY, NY",
+    "cost": 200,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "http://www.hertz.com",
+    "status": "potential"
+  },
+  {
+    "trip": "5994483d6149280e9f8380d8",
+    "name": "Peter Lugers",
+    "group": "Activities",
+    "type": "Food",
+    "startTime": "",
+    "endTime": "",
+    "location": "Williamsburg, Brooklyn, NY",
+    "cost": 350,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "",
+    "status": "booked"
+  }
+]

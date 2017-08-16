@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Paris",
+    "email": "test@test.com",
+    "participants": ["Salvatore", "Ed", "Max"],
+    "activitiesComments": "",
+    "lodgingComments": "",
+    "transportationComments": "",
+    "currency": "US Dollars"
+  },
+  {
+    "name": "New York",
+    "email": "NY@test.com",
+    "participants": ["Vincent", "Anne", "Nadir", "Brandon"],
+    "activitiesComments": "",
+    "lodgingComments": "",
+    "transportationComments": "",
+    "currency": "Euros"
+  },
+  {
+    "name": "Aruba",
+    "email": "aruba@test.com",
+    "participants": ["Pop Pop", "Aunt Sandra", "Arthur"],
+    "activitiesComments": "",
+    "lodgingComments": "",
+    "transportationComments": "",
+    "currency": "Bitcoin"
+  }
+]
