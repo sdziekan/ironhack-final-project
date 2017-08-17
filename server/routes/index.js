@@ -17,6 +17,22 @@ router.get("/api/trips", (req, res, next) => {
   });
 });
 
+router.get("/api/trips/:tripID", (req, res, next) => {
+  var tripId = req.params.tripID;
+  Trip.findById(tripId, (err, trip) => {
+    if (err) next(err);
+    else res.json(trip);
+  });
+});
+
+router.get("/api/trips/:tripID/items", (req, res, next) => {
+  var tripId = req.params.tripID;
+  Item.find(tripId, (err, item) => {
+    if (err) next(err);
+    else res.json(item);
+  });
+});
+
 router.get("/api/items", (req, res, next) => {
   Item.find().then(items => {
     res.json(items);
