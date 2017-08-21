@@ -1,6 +1,6 @@
 [
   {
-    "trip": "5994483d6149280e9f8380d8",
+    "trip": "59946cc1fe21751ab54b4bef",
     "name": "Hertz - rental car",
     "group": "Transportation",
     "type": "Car - rental",
@@ -14,7 +14,7 @@
     "status": "potential"
   },
   {
-    "trip": "5994483d6149280e9f8380d8",
+    "trip": "59946cc1fe21751ab54b4bef",
     "name": "Peter Lugers",
     "group": "Activities",
     "type": "Food",

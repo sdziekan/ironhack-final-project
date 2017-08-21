@@ -10,7 +10,7 @@
                     <h4>Description :</h4>
                     <p class="descrip">{{ trip.email }}</p>
                     <p>
-                        {{ trip.id }}
+                        {{ trip._id }}
                     </p>
                     <p>
                         {{ trip.currency }}

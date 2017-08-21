@@ -21,12 +21,13 @@
             <div class="trips-header">
                 <h2 class="trip-items-title">TRIP ITEMS</h2>
                 <button class="btn-add">ADD ITEM</button>
-                <button class="btn-view btn-list" v-on:click="setView('list')">List View</button>
-                <button class="btn-view" v-on:click="setView('map')">Map View</button>
-                <button class="btn-view" v-on:click="setView('calendar')">Calendar View</button>
+                <!-- <button class="btn-view btn-list" v-on:click="lseen = !lseen">List View</button> -->
+                <button class="btn-view btn-list">List View</button>
+                <button class="btn-view">Map View</button>
+                <button class="btn-view">Calendar View</button>
             </div>
-            <div id="list-view" v-if="seen === 'list'">
-                <!-- <div id="list-view"> -->
+            <!-- <div id="list-view" v-if="lseen"> -->
+            <div id="list-view">
 
                 <div>
                     <h3>Activities</h3>
@@ -118,14 +119,14 @@
                     </ul>
                 </div>
 
-            </div>
-            <div id="map-view" v-if="seen === 'map'">
-                <h1>PLACEHOLDER FOR MAPS</h1>
-                <!-- <div class="google-map" :id="mapName"></div> -->
-            </div>
+                <div id="map-view">
+                    <h1>PLACEHOLDER FOR MAPS</h1>
+                    <div class="google-map" :id="mapName"></div>
+                </div>
 
-            <div id="calendar-view" v-if="seen === 'calendar'">
-                <h1>PLACEHOLDER FOR CALENDARS</h1>
+                <div id="calendar-view">
+                    <h1>PLACEHOLDER FOR CALENDARS</h1>
+                </div>
             </div>
         </section>
 
@@ -141,7 +142,6 @@ export default {
             message: "TRIP INFORMATION",
             trip: "",
             items: "",
-            seen: 'list',
             styles: { height: "150px" }
         };
     },
@@ -155,12 +155,6 @@ export default {
         api.getItems(this.$route.params.tripID).then(items => {
             this.items = items;
         });
-
-    },
-    methods: {
-        setView(arg) {
-            this.seen = arg;
-        }
     }
 };
 </script>
