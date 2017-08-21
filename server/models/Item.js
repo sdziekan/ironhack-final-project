@@ -45,10 +45,12 @@ const ItemSchema = new Schema({
     type: Number
   },
   upVotes: {
-    type: Number
+    type: Number,
+    default: 0
   },
   downVotes: {
-    type: Number
+    type: Number,
+    default: 0
   },
   url: {
     type: String

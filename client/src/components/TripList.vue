@@ -1,18 +1,51 @@
 <template>
-    <v-data-table v-bind:headers="headers" :items="items" hide-actions class="elevation-1">
-        <template slot="items" scope="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.type }}</td>
-            <td class="text-xs-right">{{ props.item.startTime }}</td>
-            <td class="text-xs-right">{{ props.item.endTime }}</td>
-            <td class="text-xs-right">{{ props.item.location }}</td>
-            <td class="text-xs-right">{{ props.item.cost }}</td>
-            <td class="text-xs-right">{{ props.item.url }}</td>
-            <td class="text-xs-right">{{ props.item.status }}</td>
-            <td class="text-xs-right">{{ props.item.upVotes }}</td>
-            <td class="text-xs-right">{{ props.item.downVotes }}</td>
-        </template>
-    </v-data-table>
+    <div>
+        <h3>Activities</h3>
+        <v-data-table v-bind:headers="headers" :items="filter(items, 'Activities')" hide-actions class="elevation-1">
+            <template slot="items" scope="props">
+                <td>{{ props.item.name }}</td>
+                <td class="text-xs-right">{{ props.item.type }}</td>
+                <td class="text-xs-right">{{ props.item.startTime }}</td>
+                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <td class="text-xs-right">{{ props.item.location }}</td>
+                <td class="text-xs-right">{{ props.item.cost }}</td>
+                <td class="text-xs-right">{{ props.item.url }}</td>
+                <td class="text-xs-right">{{ props.item.status }}</td>
+                <td class="text-xs-right">{{ props.item.upVotes }}</td>
+                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+            </template>
+        </v-data-table>
+        <h3>Lodging</h3>
+        <v-data-table v-bind:headers="headers" :items="filter(items, 'Lodging')" hide-actions class="elevation-1">
+            <template slot="items" scope="props">
+                <td>{{ props.item.name }}</td>
+                <td class="text-xs-right">{{ props.item.type }}</td>
+                <td class="text-xs-right">{{ props.item.startTime }}</td>
+                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <td class="text-xs-right">{{ props.item.location }}</td>
+                <td class="text-xs-right">{{ props.item.cost }}</td>
+                <td class="text-xs-right">{{ props.item.url }}</td>
+                <td class="text-xs-right">{{ props.item.status }}</td>
+                <td class="text-xs-right">{{ props.item.upVotes }}</td>
+                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+            </template>
+        </v-data-table>
+        <h3>Transportation</h3>
+        <v-data-table v-bind:headers="headers" :items="filter(items, 'Transportation')" hide-actions class="elevation-1">
+            <template slot="items" scope="props">
+                <td>{{ props.item.name }}</td>
+                <td class="text-xs-right">{{ props.item.type }}</td>
+                <td class="text-xs-right">{{ props.item.startTime }}</td>
+                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <td class="text-xs-right">{{ props.item.location }}</td>
+                <td class="text-xs-right">{{ props.item.cost }}</td>
+                <td class="text-xs-right">{{ props.item.url }}</td>
+                <td class="text-xs-right">{{ props.item.status }}</td>
+                <td class="text-xs-right">{{ props.item.upVotes }}</td>
+                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+            </template>
+        </v-data-table>
+    </div>
 </template>
 
 <script>
@@ -38,8 +71,21 @@ export default {
             items: []
         }
     },
-
-
+    methods: {
+        filter: function (items, groupName) {
+            var res = [];
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].group === groupName)
+                    res.push(items[i]);
+            }
+            return res;
+        }
+    },
+    computed: {
+        activityItems: function () {
+            return this.items;
+        }
+    },
     created() {
 
 
