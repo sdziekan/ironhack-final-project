@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
+const _ = require("lodash");
 mongoose.connect("mongoose://localhost/ktrip");
 
 var Trip = require("../models/Trip.js");
@@ -45,6 +46,29 @@ router.post("/", (req, res) => {
         console.log(err)
     });
 
+});
+
+router.post("/:itemID", (req, res, next) => {
+    const itemId = req.params.itemID;
+
+    const object = _.pick(req.body, ['name', 'group', 'type', 'startTime', 'endTime', 'location', 'cost', 'url', 'status']);
+
+    const updates = { $set: object };
+
+
+    Item.findByIdAndUpdate(itemId, updates, (err, item) => {
+        if (err) { return next(err); }
+        return res.json(item);
+    });
+});
+
+router.delete("/:itemID", (req, res, next) => {
+    const itemId = req.params.itemID;
+
+    Item.findByIdAndRemove(itemId, err => {
+        if (err) next(err);
+        else res.json({ success: true });
+    });
 });
 
 

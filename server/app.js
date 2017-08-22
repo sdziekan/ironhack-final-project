@@ -5,6 +5,7 @@ var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+const _ = require("lodash");
 
 mongoose.connect("mongodb://localhost/ktrip");
 
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
 
 app.use("/", index);
 app.use("/api/trips/", trips);
-app.use("/api/items", items);
+app.use("/api/items/", items);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

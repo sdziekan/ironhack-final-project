@@ -26,5 +26,61 @@
     "downVotes": 0,
     "url": "",
     "status": "booked"
+  },
+  {
+    "trip": "59946cc1fe21751ab54b4bef",
+    "name": "Starbucks",
+    "group": "Activities",
+    "type": "Drinks",
+    "startTime": "",
+    "endTime": "",
+    "location": "W 42nd Street, NY, NY",
+    "cost": 0,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "",
+    "status": "potential"
+  },
+  {
+    "trip": "59946cc1fe21751ab54b4bef",
+    "name": "Grimaldis Pizzeria",
+    "group": "Activities",
+    "type": "Food",
+    "startTime": "",
+    "endTime": "",
+    "location": "DUMBO, Brooklyn, NY",
+    "cost": 25,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "",
+    "status": "booked"
+  },
+  {
+    "trip": "59946cc1fe21751ab54b4bef",
+    "name": "Ferry",
+    "group": "Transportation",
+    "type": "Boat/Ferry",
+    "startTime": "",
+    "endTime": "",
+    "location": "Battery Park, NY, NY",
+    "cost": 6,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "",
+    "status": "booked"
+  },
+  {
+    "trip": "59946cc1fe21751ab54b4bef",
+    "name": "Holiday Inn",
+    "group": "Lodging",
+    "type": "Hotel",
+    "startTime": "",
+    "endTime": "",
+    "location": "42nd Street, NY, NY",
+    "cost": 125,
+    "upVotes": 0,
+    "downVotes": 0,
+    "url": "",
+    "status": "potential"
   }
 ]

@@ -29,7 +29,9 @@ const ItemSchema = new Schema({
       "Boat/Ferry",
       "Hiking/Walking",
       "other",
-      "Food"
+      "Food",
+      "Drinks",
+      "Hotel"
     ]
   },
   startTime: {

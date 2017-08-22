@@ -20,10 +20,10 @@
             </div>
             <div class="trips-header">
                 <h2 class="trip-items-title">TRIP ITEMS</h2>
-                <button class="btn-add">ADD ITEM</button>
-                <button class="btn-view btn-list" v-on:click="setView('list')">List View</button>
-                <button class="btn-view" v-on:click="setView('map')">Map View</button>
-                <button class="btn-view" v-on:click="setView('calendar')">Calendar View</button>
+                <v-btn round primary class="btn-add">ADD ITEM</v-btn>
+                <v-btn round primary dark class="btn-view btn-list" v-on:click="setView('list')">List View</v-btn>
+                <v-btn round primary class="btn-view" v-on:click="setView('map')">Map View</v-btn>
+                <v-btn round primary class="btn-view" v-on:click="setView('calendar')">Calendar View</v-btn>
             </div>
             <div id="list-view" v-if="seen === 'list'">
                 <!-- <div id="list-view"> -->
@@ -61,9 +61,9 @@
                         Location: <input type="text" v-model="item.location"> Item Cost: <input type="text" v-model="item.cost">
 
                         <li>
-                            <button>EDIT</button>
-                            <!--Defintely an issue with the button  -->
-                            <button v-on:click="items.splice(index, 1)">DELETE</button>
+                            <v-btn>EDIT</v-btn>
+                            <!--Defintely an issue with the v-btn  -->
+                            <v-btn v-on:click="deleteItemWithIndex(index)">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
@@ -87,8 +87,8 @@
                             <p>{{ item.cost }}</p>
                         </li>
                         <li>
-                            <button>EDIT</button>
-                            <button>DELETE</button>
+                            <v-btn>EDIT</v-btn>
+                            <v-btn>DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
@@ -112,8 +112,8 @@
                             <p>{{ item.cost }}</p>
                         </li>
                         <li>
-                            <button>EDIT</button>
-                            <button>DELETE</button>
+                            <v-btn>EDIT</v-btn>
+                            <v-btn>DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
@@ -156,12 +156,26 @@ export default {
             this.items = items;
         });
 
+
     },
     methods: {
         setView(arg) {
             this.seen = arg;
+        },
+
+        //fix this 8/22/17
+        deleteItemWithIndex(index) {
+            api.deleteItem(this.items.splice(index, 1));
         }
+        //???????
+        // api.deleteItem(this.$route.params.itemID).then(item => {
+        //     this.item = item;
+        // }
     }
+
+
+
+
 };
 </script>
 
