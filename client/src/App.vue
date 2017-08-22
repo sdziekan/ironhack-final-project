@@ -1,7 +1,8 @@
 <template>
   <v-app>
-    <img src="./assets/hiker-on-globe.png">
+
     <v-container>
+      <img src="./assets/hiker-on-globe.png">
       <router-view></router-view>
     </v-container>
 
