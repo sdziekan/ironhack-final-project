@@ -20,12 +20,13 @@
             </div>
             <div class="trips-header">
                 <h2 class="trip-items-title">TRIP ITEMS</h2>
-                <v-btn round primary class="btn-add">ADD ITEM</v-btn>
-                <v-btn round primary dark class="btn-view btn-list" v-on:click="setView('list')">List View</v-btn>
-                <v-btn round primary class="btn-view" v-on:click="setView('map')">Map View</v-btn>
-                <v-btn round primary class="btn-view" v-on:click="setView('calendar')">Calendar View</v-btn>
+                <v-btn round primary class="btn-add" @click="setView('addItemForm')">ADD ITEM</v-btn>
+                <v-btn round primary dark class="btn-view btn-list" @click="setView('list')">List View</v-btn>
+                <v-btn round primary class="btn-view" @click="setView('map')">Map View</v-btn>
+                <v-btn round primary class="btn-view" @click="setView('calendar')">Calendar View</v-btn>
             </div>
             <div id="list-view" v-if="seen === 'list'">
+
                 <!-- <div id="list-view"> -->
 
                 <div>
@@ -63,13 +64,13 @@
                         <li>
                             <v-btn>EDIT</v-btn>
                             <!--Defintely an issue with the v-btn  -->
-                            <v-btn v-on:click="deleteItemWithIndex(index)">DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3>Lodging</h3>
-                    <ul class="itemList" v-for="item in items" v-show="item.group === 'Lodging' ">
+                    <ul class="itemList" v-for="(item, index) in items" v-show="item.group === 'Lodging' ">
                         <!-- <h2>{{ item.trip }}</h2> -->
                         <li>
                             <p>{{ item.name }}</p>
@@ -88,13 +89,13 @@
                         </li>
                         <li>
                             <v-btn>EDIT</v-btn>
-                            <v-btn>DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3>Transportation</h3>
-                    <ul class="itemList" v-for="item in items" v-show="item.group === 'Transportation' ">
+                    <ul class="itemList" v-for="(item, index) in items" v-show="item.group === 'Transportation' ">
                         <!-- <h2>{{ item.trip }}</h2> -->
                         <li>
                             <p>{{ item.name }}</p>
@@ -113,7 +114,7 @@
                         </li>
                         <li>
                             <v-btn>EDIT</v-btn>
-                            <v-btn>DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
@@ -127,8 +128,17 @@
             <div id="calendar-view" v-if="seen === 'calendar'">
                 <h1>PLACEHOLDER FOR CALENDARS</h1>
             </div>
-        </section>
+            <div id="add-item-form" v-if="seen === 'addItemForm'">
 
+            </div>
+
+        </section>
+        <template>
+            <v-footer light class="pa-3">
+                <v-spacer></v-spacer>
+                <div>© {{ new Date().getFullYear() }}</div>
+            </v-footer>
+</template>
     </div>
 </template>
 
@@ -165,17 +175,16 @@ export default {
 
         //fix this 8/22/17
         deleteItemWithIndex(index) {
-            api.deleteItem(this.items.splice(index, 1));
+            let itemID = this.items[index]._id;
+
+            this.items.splice(index, 1); // To update this.items in Vue application
+
+            // To update the information on the backend
+            api.deleteItem(itemID).then(response => {
+                response.data;
+            });
         }
-        //???????
-        // api.deleteItem(this.$route.params.itemID).then(item => {
-        //     this.item = item;
-        // }
     }
-
-
-
-
 };
 </script>
 
@@ -257,5 +266,9 @@ a {
     height: 600px;
     margin: 0 auto;
     background: gray;
+}
+
+.ai {
+    padding-top: 50px;
 }
 </style>

@@ -22,18 +22,15 @@ function getItem(tripID) {
   });
 };
 
-//???????? fix this 8/22/17
 function deleteItem(itemID) {
   return myApi.delete("/items/" + itemID).then(response => {
-    if (err) {
-      return next(err)
-    }
-    response.json({ success: true });
-  });
+    return response.data
+  }).catch(function (err) {
+    return (err)
+  })
 };
 
 export default {
-  myApi,
   getTrip,
   getItem,
   getItems,
