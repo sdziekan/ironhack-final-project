@@ -1,19 +1,51 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-  
+
     <h2>CREATE A NEW TRIP</h2>
     <h3>It's simple! Just enter a New Trip Name and your Email Address to get started</h3>
-    <ul class='new-trip'>
-      <li>New Trip Name:
-        <input type="text"> </li>
-      <li>Your Email:
-        <input type="text">
-      </li>
-      </br>
-  
-      <button class='btn-trip'>LET'S PLAN A TRIP</button>
-    </ul>
+    <!-- <ul class='new-trip'>
+          <li>New Trip Name:
+            <input type="text"> </li>
+          <li>Your Email:
+            <input type="text">
+          </li>
+          </br>
+        </ul> -->
+
+    <v-container fluid="fluid" class="text-xs-center">
+      <v-card height="300px" class="elevation-0 white">
+        <v-card-text>
+          <v-layout row>
+            <v-flex xs4>
+              <v-subheader>New Trip Name:</v-subheader>
+            </v-flex>
+            <v-flex xs8>
+              <v-text-field name="input-1" label="New Trip Name" id="testing"></v-text-field>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs4>
+              <v-subheader>Your Email</v-subheader>
+            </v-flex>
+            <v-flex xs8>
+              <v-text-field name="input-1" label="email" id="testing"></v-text-field>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap>
+            <v-flex xs12 sm6>
+
+              <div>
+                <v-btn light>LET'S PLAN A TRIP</v-btn>
+              </div>
+
+            </v-flex>
+
+          </v-layout>
+        </v-card-text>
+      </v-card>
+    </v-container>
+
     <div class='lower-bkgrd'>
       <h2>The Problems:</h2>
       <ul class='problems'>

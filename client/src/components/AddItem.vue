@@ -1,32 +1,118 @@
 <template>
     <div>
-        <form>
-            <p>Name: <input type="text" placeholder="   name" v-model="name"></p>
+        <!-- <form>
+                    <p>Name: <input type="text" placeholder="   name" v-model="name"></p>
 
-            <p>Group:
-                <select v-model="group">
-                    <option>Activities</option>
-                    <option>Lodging</option>
-                    <option>Transportation</option>
-                </select>
-            </p>
+                    <p>Group:
+                        <select v-model="group">
+                            <option>Activities</option>
+                            <option>Lodging</option>
+                            <option>Transportation</option>
+                        </select>
+                    </p>
 
-            <p>Type: <input type="text" placeholder="  type" v-model="type"></p>
-            <p>Start Time: <input type="text" placeholder="  start time" v-model="startTime"></p>
-            <p>End Time: <input type="text" placeholder="  end time" v-model="endTime"></p>
+                    <p>Type: <input type="text" placeholder="  type" v-model="type"></p>
+                    <p>Start Time: <input type="text" placeholder="  start time" v-model="startTime"></p>
+                    <p>End Time: <input type="text" placeholder="  end time" v-model="endTime"></p>
 
-            <p>Location: <input type="text" placeholder="  location" v-model="location"></p>
-            <p>Website: <input type="text" placeholder="  website" v-model="url"></p>
-            <p>Cost: <input type="text" placeholder="  cost" v-model="cost"></p>
-            <p>Status:
-                <select v-model="status">
-                    <option>potential</option>
-                    <option>booked</option>
-                    <option>archived</option>
-                </select>
-            </p>
+                    <p>Location: <input type="text" placeholder="  location" v-model="location"></p>
+                    <p>Website: <input type="text" placeholder="  website" v-model="url"></p>
+                    <p>Cost: <input type="text" placeholder="  cost" v-model="cost"></p>
+                    <p>Status:
+                        <select v-model="status">
+                            <option>potential</option>
+                            <option>booked</option>
+                            <option>archived</option>
+                        </select>
+                    </p>
 
-        </form>
+                </form> -->
+
+        <v-card class="grey lighten-4 elevation-0">
+            <v-card-text>
+                <v-container fluid>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Name: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Name" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Group: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Change to Select. Mandatory field!" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Type: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Also a Select, but dependent upon the Group" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Start Time: </v-subheader>
+                        </v-flex>
+                        <v-flex md12 lg4>
+                            <v-date-picker v-model="picker"></v-date-picker>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>End Time: </v-subheader>
+                        </v-flex>
+                        <v-flex md12 lg4>
+                            <v-date-picker v-model="picker"></v-date-picker>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Location: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Address" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Website: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Website" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Cost: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Cost" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader>Status: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field name="input-1" label="Last Select" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+
+                    </v-layout>
+
+                </v-container>
+            </v-card-text>
+        </v-card>
 
         <v-footer light class="pa-3">
             <v-spacer></v-spacer>
