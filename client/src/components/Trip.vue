@@ -129,16 +129,16 @@
                 <h1>PLACEHOLDER FOR CALENDARS</h1>
             </div>
             <div id="add-item-form" v-if="seen === 'addItemForm'">
-
+                c
             </div>
 
         </section>
-        <template>
-            <v-footer light class="pa-3">
-                <v-spacer></v-spacer>
-                <div>© {{ new Date().getFullYear() }}</div>
-            </v-footer>
-</template>
+        <!-- <template>
+                <v-footer light class="pa-3">
+                    <v-spacer></v-spacer>
+                    <div>© {{ new Date().getFullYear() }}</div>
+                </v-footer>
+    </template> -->
     </div>
 </template>
 

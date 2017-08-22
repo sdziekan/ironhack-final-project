@@ -10,6 +10,7 @@ import TripCalendar from "@/components/TripCalendar";
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: "/",

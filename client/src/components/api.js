@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const myApi = axios.create({
-  baseURL: "http://localhost:3000/api/"
+  baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api"
 });
 
 function getTrip(tripID) {

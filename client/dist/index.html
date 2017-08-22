@@ -1,0 +1,47 @@
+Html Webpack Plugin:
+<pre>
+  Error: Parse Error: <script src=”https://maps.googleapis.com/maps/api/js?key=AIzaSyAoeBtJGBOp0qPaWayVKh01h13aThFSLW0”></script>
+  <link href="/static/css/app.b9a406e2e8457f2137b652e8d9a34b12.css" rel="stylesheet"></head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  <script type="text/javascript" src="/static/js/manifest.be87a4da1126c0666017.js"></script><script type="text/javascript" src="/static/js/vendor.2280170bf6cd62721c97.js"></script><script type="text/javas  cript" src="/static/js/app.39f89eac6668d55b3dd4.js"></script></body>
+  </html>
+  
+  - htmlparser.js:235 new HTMLParser
+    [client]/[html-minifier]/src/htmlparser.js:235:13
+  
+  - htmlminifier.js:946 minify
+    [client]/[html-minifier]/src/htmlminifier.js:946:3
+  
+  - htmlminifier.js:1299 exports.minify
+    [client]/[html-minifier]/src/htmlminifier.js:1299:10
+  
+  - index.js:296 
+    [client]/[html-webpack-plugin]/index.js:296:16
+  
+  - util.js:16 tryCatcher
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/util.js:16:23
+  
+  - promise.js:512 Promise._settlePromiseFromHandler
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/promise.js:512:31
+  
+  - promise.js:569 Promise._settlePromise
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/promise.js:569:18
+  
+  - promise.js:614 Promise._settlePromise0
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/promise.js:614:10
+  
+  - promise.js:693 Promise._settlePromises
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/promise.js:693:18
+  
+  - async.js:133 Async._drainQueue
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/async.js:133:16
+  
+  - async.js:143 Async._drainQueues
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/async.js:143:10
+  
+  - async.js:17 Immediate.Async.drainQueues
+    [client]/[html-webpack-plugin]/[bluebird]/js/release/async.js:17:14
+  
+</pre>
