@@ -11,7 +11,7 @@ webpackJsonp([1],[
 
 
 const myApi = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-  baseUrl:  true ? '/api' : "http://localhost:3000/api"
+  baseURL:  true ? '/api' : "http://localhost:3000/api"
 });
 
 function getTrip(tripID) {
@@ -1690,7 +1690,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "tripsList"
   }, [_c('h2', [_vm._v(_vm._s(_vm.trip.name))]), _vm._v(" "), _c('h4', [_vm._v("Description :")]), _vm._v(" "), _c('p', {
     staticClass: "descrip"
-  }, [_vm._v(_vm._s(_vm.trip.email))]), _vm._v(" "), _c('p', [_vm._v("\n                    " + _vm._s(_vm.trip._id) + "\n                ")]), _vm._v(" "), _c('p', [_vm._v("\n                    " + _vm._s(_vm.trip.currency) + "\n                ")]), _vm._v(" "), _c('p', [_vm._v("\n                    " + _vm._s(_vm.trip.participants) + "\n                ")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.trip.email))]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(_vm.trip._id) + "\n            ")]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(_vm.trip.currency) + "\n            ")]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(_vm.trip.participants) + "\n            ")])]), _vm._v(" "), _c('div', {
     staticClass: "trips-header"
   }, [_c('h2', {
     staticClass: "trip-items-title"
@@ -1752,7 +1752,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         expression: "item.group === 'Activities' "
       }],
       staticClass: "itemList"
-    }, [_c('h2', [_vm._v(_vm._s(item._id))]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.group))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.type))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.location))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.cost))])]), _vm._v(" "), _c('br'), _vm._v("\n                        Item Name: "), _c('input', {
+    }, [_c('h2', [_vm._v(_vm._s(item._id))]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.group))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.type))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.location))])]), _vm._v(" "), _c('li', [_c('p', [_vm._v(_vm._s(item.cost))])]), _vm._v(" "), _c('br'), _vm._v("\n                    Item Name: "), _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -1771,7 +1771,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
           item.name = $event.target.value
         }
       }
-    }), _vm._v(" Item Group:\n                        "), _c('select', {
+    }), _vm._v(" Item Group:\n                    "), _c('select', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -1789,7 +1789,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
           item.group = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
         }
       }
-    }, [_c('option', [_vm._v("Activity")]), _vm._v(" "), _c('option', [_vm._v("Lodging")]), _vm._v(" "), _c('option', [_vm._v("Transportation")])]), _vm._v("\n                        Type:\n                        "), _c('li', [_c('p', [_vm._v(_vm._s(item.type))])]), _vm._v("\n                        Location: "), _c('input', {
+    }, [_c('option', [_vm._v("Activity")]), _vm._v(" "), _c('option', [_vm._v("Lodging")]), _vm._v(" "), _c('option', [_vm._v("Transportation")])]), _vm._v("\n                    Type:\n                    "), _c('li', [_c('p', [_vm._v(_vm._s(item.type))])]), _vm._v("\n                    Location: "), _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -1878,12 +1878,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "add-item-form"
     }
-  }, [_vm._v("\n                c\n            ")]) : _vm._e()]), _vm._v(" "), [_c('v-footer', {
-    staticClass: "pa-3",
-    attrs: {
-      "light": ""
-    }
-  }, [_c('v-spacer'), _vm._v(" "), _c('div', [_vm._v("© " + _vm._s(new Date().getFullYear()))])], 1)]], 2)
+  }, [_vm._v("\n            c\n        ")]) : _vm._e()])])
 }
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
@@ -1927,4 +1922,4 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 
 /***/ })
 ],[39]);
-//# sourceMappingURL=app.39f89eac6668d55b3dd4.js.map
+//# sourceMappingURL=app.549ee3e5e464a052ec5c.js.map
