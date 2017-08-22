@@ -10,7 +10,6 @@ const _ = require("lodash");
 
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
-var index = require("./routes/index");
 var trips = require("./routes/trips");
 var items = require("./routes/items");
 
@@ -34,12 +33,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", index);
 app.use("/api/trips/", trips);
 app.use("/api/items/", items);
 
 const history = require('connect-history-api-fallback')
 
+const clientRoot = path.join(__dirname, '../client/dist');
+app.use('/', express.static(clientRoot))
+app.use(history('index.html', { root: clientRoot }))
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

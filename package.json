@@ -1,0 +1,21 @@
+{
+  "name": "ironhack-final-project",
+  "version": "1.0.0",
+  "description": "Ironhack Final Project - Javascript fullstack travel planner",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server && npm install",
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdziekan/ironhack-final-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdziekan/ironhack-final-project/issues"
+  },
+  "homepage": "https://github.com/sdziekan/ironhack-final-project#readme"
+}
