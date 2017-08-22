@@ -1,3 +1,4 @@
+require("dotenv").config()
 var express = require("express");
 var path = require("path");
 var favicon = require("serve-favicon");
@@ -7,7 +8,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 const _ = require("lodash");
 
-mongoose.connect("mongodb://localhost/ktrip");
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 var index = require("./routes/index");
 var trips = require("./routes/trips");
@@ -36,6 +37,9 @@ app.use((req, res, next) => {
 app.use("/", index);
 app.use("/api/trips/", trips);
 app.use("/api/items/", items);
+
+const history = require('connect-history-api-fallback')
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
