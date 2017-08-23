@@ -19,7 +19,6 @@ const ItemSchema = new Schema({
   },
   type: {
     type: String,
-    required: [true, "type is required"],
     enum: [
       "Car - own",
       "Car - rental",
@@ -34,7 +33,13 @@ const ItemSchema = new Schema({
       "Hotel"
     ]
   },
+  startDate: {
+    type: Date
+  },
   startTime: {
+    type: Date
+  },
+  endDate: {
     type: Date
   },
   endTime: {

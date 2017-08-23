@@ -30,7 +30,9 @@ router.post("/", (req, res) => {
             name: req.body.name,
             group: req.body.group,
             type: req.body.type,
+            startDate: req.body.startDate,
             startTime: req.body.startTime,
+            endDate: req.body.endDate,
             endTime: req.body.endTime,
             location: req.body.location,
             cost: req.body.cost,
@@ -51,7 +53,7 @@ router.post("/", (req, res) => {
 router.post("/:itemID", (req, res, next) => {
     const itemId = req.params.itemID;
 
-    const object = _.pick(req.body, ['name', 'group', 'type', 'startTime', 'endTime', 'location', 'cost', 'url', 'status']);
+    const object = _.pick(req.body, ['name', 'group', 'type', 'startDate', 'startTime', 'endDate', 'endTime', 'location', 'cost', 'url', 'status']);
 
     const updates = { $set: object };
 

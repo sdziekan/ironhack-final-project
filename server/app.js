@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 const _ = require("lodash");
 
+
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 var trips = require("./routes/trips");
@@ -36,7 +37,7 @@ app.use((req, res, next) => {
 app.use("/api/trips/", trips);
 app.use("/api/items/", items);
 
-const history = require('connect-history-api-fallback')
+const history = require('express-history-api-fallback')
 
 const clientRoot = path.join(__dirname, '../client/dist');
 app.use('/', express.static(clientRoot))
