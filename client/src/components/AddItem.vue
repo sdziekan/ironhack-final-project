@@ -1,115 +1,103 @@
 <template>
     <div>
-        <!-- <form>
-                    <p>Name: <input type="text" placeholder="   name" v-model="name"></p>
-
-                    <p>Group:
-                        <select v-model="group">
-                            <option>Activities</option>
-                            <option>Lodging</option>
-                            <option>Transportation</option>
-                        </select>
-                    </p>
-
-                    <p>Type: <input type="text" placeholder="  type" v-model="type"></p>
-                    <p>Start Time: <input type="text" placeholder="  start time" v-model="startTime"></p>
-                    <p>End Time: <input type="text" placeholder="  end time" v-model="endTime"></p>
-
-                    <p>Location: <input type="text" placeholder="  location" v-model="location"></p>
-                    <p>Website: <input type="text" placeholder="  website" v-model="url"></p>
-                    <p>Cost: <input type="text" placeholder="  cost" v-model="cost"></p>
-                    <p>Status:
-                        <select v-model="status">
-                            <option>potential</option>
-                            <option>booked</option>
-                            <option>archived</option>
-                        </select>
-                    </p>
-
-                </form> -->
-
-        <v-card class="grey lighten-4 elevation-0">
+        <v-card class="green lighten-2 elevation-15 form-card">
             <v-card-text>
                 <v-container fluid>
                     <v-layout row>
                         <v-flex xs4>
-                            <v-subheader>Name: </v-subheader>
+                            <v-subheader class="input-label">Name: </v-subheader>
                         </v-flex>
                         <v-flex xs8>
-                            <v-text-field name="input-1" label="Name" id="testing"></v-text-field>
+                            <v-text-field v-model="name" name="input-1" label="Name" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
                         <v-flex xs4>
-                            <v-subheader>Group: </v-subheader>
+                            <v-subheader class="input-label">Group: </v-subheader>
                         </v-flex>
                         <v-flex xs8>
-                            <v-text-field name="input-1" label="Change to Select. Mandatory field!" id="testing"></v-text-field>
+                            <v-select :items="groupOptions" v-model="group" label="Select Group" single-line bottom></v-select>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader class="input-label">Type: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-select :items="typeOptions" v-model="type" label="Select Type" single-line bottom></v-select>
                         </v-flex>
                     </v-layout>
 
                     <v-layout row>
                         <v-flex xs4>
-                            <v-subheader>Type: </v-subheader>
+                            <v-subheader class="input-label">Location: </v-subheader>
                         </v-flex>
                         <v-flex xs8>
-                            <v-text-field name="input-1" label="Also a Select, but dependent upon the Group" id="testing"></v-text-field>
+                            <v-text-field v-model="location" name="input-1" label="Address" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader class="input-label">Website: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field v-model="url" name="input-1" label="Website" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader class="input-label">Cost: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-text-field v-model="cost" name="input-1" label="Cost" id="testing"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout row>
+                        <v-flex xs4>
+                            <v-subheader class="input-label">Status: </v-subheader>
+                        </v-flex>
+                        <v-flex xs8>
+                            <v-select :items="statusOptions" v-model="status" label="Select Status" single-line bottom></v-select>
                         </v-flex>
                     </v-layout>
 
                     <v-layout row>
                         <v-flex xs4>
-                            <v-subheader>Start Time: </v-subheader>
+                            <v-subheader class="input-label">Start Date & Time: </v-subheader>
                         </v-flex>
-                        <v-flex md12 lg4>
-                            <v-date-picker v-model="picker"></v-date-picker>
+                        <v-flex md6 lg4>
+                            <!-- <v-date-picker v-model="startDate"></v-date-picker> -->
+                        </v-flex>
+                        <v-flex md6 lg4>
+                            <!-- <v-time-picker v-model="startTime"></v-time-picker> -->
                         </v-flex>
                     </v-layout>
                     <v-layout row>
                         <v-flex xs4>
-                            <v-subheader>End Time: </v-subheader>
+                            <v-subheader class="input-label">End Date & Time: </v-subheader>
                         </v-flex>
-                        <v-flex md12 lg4>
-                            <v-date-picker v-model="picker"></v-date-picker>
+                        <v-flex md6 lg4>
+                            <!-- <v-date-picker v-model="endDate"></v-date-picker> -->
                         </v-flex>
-                    </v-layout>
 
-                    <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader>Location: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
-                            <v-text-field name="input-1" label="Address" id="testing"></v-text-field>
+                        <v-flex md6 lg4>
+                            <!-- <v-time-picker v-model="endTime"></v-time-picker> -->
                         </v-flex>
                     </v-layout>
-                    <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader>Website: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
-                            <v-text-field name="input-1" label="Website" id="testing"></v-text-field>
-                        </v-flex>
-                    </v-layout>
-                    <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader>Cost: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
-                            <v-text-field name="input-1" label="Cost" id="testing"></v-text-field>
-                        </v-flex>
-                    </v-layout>
+                </v-container>
+                <v-container>
+                    <v-flex>
+                        <v-card height="80px" offset-xs3 class="elevation-2 white">
+                            <v-card-text>
+                                <div>
+                                    <v-btn light @click="submitButton()">Submit</v-btn>
 
-                    <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader>Status: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
-                            <v-text-field name="input-1" label="Last Select" id="testing"></v-text-field>
-                        </v-flex>
-                    </v-layout>
+                                    <v-btn light @click="returnToTrip()">Cancel</v-btn>
+                                </div>
 
-                    </v-layout>
-
+                            </v-card-text>
+                        </v-card>
+                    </v-flex>
                 </v-container>
             </v-card-text>
         </v-card>
@@ -128,14 +116,40 @@ export default {
     data() {
         return {
             message: "TRIP INFORMATION",
-            trip: "",
+            items: [],
+            trip: null,
             name: "",
-            group: "",
-            type: "",
-            startTime: "",
-            endTime: "",
+            group: {},
+            groupOptions: [
+                { text: 'Activities' },
+                { text: 'Lodging' },
+                { text: 'Transportation' }
+            ],
+            type: {},
+            typeOptions: [
+                { text: "Car - own" },
+                { text: "Car - rental" },
+                { text: "Car - share" },
+                { text: "Plane" },
+                { text: "Train" },
+                { text: "Boat/Ferry" },
+                { text: "Hiking/Walking" },
+                { text: "other" },
+                { text: "Food" },
+                { text: "Drinks" },
+                { text: "Hotel" }
+            ],
+            startDate: null,
+            startTime: null,
+            endDate: null,
+            endTime: null,
             url: "",
-            status: "",
+            status: {},
+            statusOptions: [
+                { text: 'potential' },
+                { text: 'booked' },
+                { text: 'archived' }
+            ],
             location: "",
             cost: null,
             styles: { height: "150px" }
@@ -169,9 +183,68 @@ export default {
             api.deleteItem(itemID).then(response => {
                 response.data;
             });
+        },
+
+        returnToTrip() {
+            if (this.trip) {
+                this.$router.push({ name: 'Trip', params: { tripID: this.trip._id } })
+            }
+        },
+
+        createNewItem() {
+            const fields = {
+                trip: this.trip,
+                name: this.name,
+                group: this.group.text,
+                type: this.type.text,
+                startDate: this.startDate,
+                startTime: this.startTime,
+                endDate: this.endDate,
+                endTime: this.endTime,
+                location: this.location,
+                cost: this.cost,
+                url: this.url,
+                status: this.status.text
+            }
+            return api.createItem(fields);
+        },
+
+        submitButton() {
+            this.createNewItem().then(() => {
+                this.returnToTrip()
+            }).catch(err => {
+                alert("Error creating new item. Please try again")
+            })
         }
     }
-};
+}
+
+
+// DELETE, if this works
+            // this.createNewItem().then ;
+            // this.returnToTrip();
+
+
+//  user.save()
+//   .then((user) => {
+//     res.redirect('/login')
+//   }).catch((err) => {
+//     res.redirect('/signup')
+//   })
+
+//   created() {
+//     getPost(this.$route.params.postId)
+//       .then(post => {
+//         this.post = post;
+//         return getUser(post.userId);
+//       })
+//       .then(user => {
+//         this.user = user;
+//       });
+// 
+// 
+// 
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -258,14 +331,14 @@ a {
     padding-top: 50px;
 }
 
-v-parallax {
-    width: 100%;
-    height: auto;
-}
 
 input,
 select {
     border: 1px solid black;
     border-radius: 5px;
+}
+
+.form-card {
+    border-radius: 15px;
 }
 </style>

@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/sdziekan/ironhack-final-project/issues"
   },
-  "homepage": "https://github.com/sdziekan/ironhack-final-project#readme"
+  "homepage": "https://github.com/sdziekan/ironhack-final-project#readme",
+  "dependencies": {}
 }

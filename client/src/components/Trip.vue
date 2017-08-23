@@ -19,19 +19,44 @@
                 </p>
             </div>
             <div class="trips-header">
-                <h2 class="trip-items-title">TRIP ITEMS</h2>
+
+                <h2 class="trip-items-title">
+                    TRIP ITEMS</h2>
+
                 <v-btn round primary class="btn-add" @click="setView('addItemForm')">ADD ITEM</v-btn>
                 <v-btn round primary dark class="btn-view btn-list" @click="setView('list')">List View</v-btn>
                 <v-btn round primary class="btn-view" @click="setView('map')">Map View</v-btn>
                 <v-btn round primary class="btn-view" @click="setView('calendar')">Calendar View</v-btn>
             </div>
-            <div id="list-view" v-if="seen === 'list'">
+            <v-tabs dark fixed icons centered>
+                <v-tabs-bar slot="activators" class="cyan">
+                    <v-tabs-slider class="yellow"></v-tabs-slider>
+                    <v-tabs-item href="#tab-1">
+                        <v-icon>list</v-icon>
+                        List
+                    </v-tabs-item>
+                    <v-tabs-item href="#tab-2">
+                        <v-icon>map</v-icon>
+                        Map
+                    </v-tabs-item>
+                    <v-tabs-item href="#tab-3">
+                        <v-icon>event</v-icon>
+                        Calendar
+                    </v-tabs-item>
+                </v-tabs-bar>
+                <v-tabs-content v-for="i in 3" :key="i" :id="'tab-' + i">
+                    <v-card flat>
+                        <v-card-text>{{ text }}</v-card-text>
+                    </v-card>
+                </v-tabs-content>
+            </v-tabs>
+            <div id="list-view " v-if="seen==='list' ">
 
-                <!-- <div id="list-view"> -->
+                <!-- <div id="list-view "> -->
 
                 <div>
                     <h3>Activities</h3>
-                    <ul class="itemList" v-for="(item, index) in items" v-show="item.group === 'Activities' ">
+                    <ul class="itemList " v-for="(item, index) in items " v-show="item.group==='Activities' ">
                         <h2>{{ item._id }}</h2>
                         <li>
                             <p>{{ item.name }}</p>
@@ -49,8 +74,8 @@
                             <p>{{ item.cost }}</p>
                         </li>
                         </br>
-                        Item Name: <input type="text" v-model="item.name"> Item Group:
-                        <select v-model="item.group">
+                        Item Name: <input type="text " v-model="item.name "> Item Group:
+                        <select v-model="item.group ">
                             <option>Activity</option>
                             <option>Lodging</option>
                             <option>Transportation</option>
@@ -59,18 +84,17 @@
                         <li>
                             <p>{{ item.type }}</p>
                         </li>
-                        Location: <input type="text" v-model="item.location"> Item Cost: <input type="text" v-model="item.cost">
+                        Location: <input type="text " v-model="item.location "> Item Cost: <input type="text " v-model="item.cost ">
 
                         <li>
                             <v-btn>EDIT</v-btn>
-                            <!--Defintely an issue with the v-btn  -->
-                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index) ">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3>Lodging</h3>
-                    <ul class="itemList" v-for="(item, index) in items" v-show="item.group === 'Lodging' ">
+                    <ul class="itemList " v-for="(item, index) in items " v-show="item.group==='Lodging' ">
                         <!-- <h2>{{ item.trip }}</h2> -->
                         <li>
                             <p>{{ item.name }}</p>
@@ -89,13 +113,13 @@
                         </li>
                         <li>
                             <v-btn>EDIT</v-btn>
-                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index) ">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3>Transportation</h3>
-                    <ul class="itemList" v-for="(item, index) in items" v-show="item.group === 'Transportation' ">
+                    <ul class="itemList " v-for="(item, index) in items " v-show="item.group==='Transportation' ">
                         <!-- <h2>{{ item.trip }}</h2> -->
                         <li>
                             <p>{{ item.name }}</p>
@@ -114,25 +138,25 @@
                         </li>
                         <li>
                             <v-btn>EDIT</v-btn>
-                            <v-btn @click="deleteItemWithIndex(index)">DELETE</v-btn>
+                            <v-btn @click="deleteItemWithIndex(index) ">DELETE</v-btn>
                         </li>
                     </ul>
                 </div>
 
             </div>
-            <div id="map-view" v-if="seen === 'map'">
+            <div id="map-view " v-if="seen==='map' ">
                 <h1>PLACEHOLDER FOR MAPS</h1>
-                <!-- <div class="google-map" :id="mapName"></div> -->
+                <!-- <div class="google-map " :id="mapName "></div> -->
             </div>
 
-            <div id="calendar-view" v-if="seen === 'calendar'">
+            <div id="calendar-view " v-if="seen==='calendar' ">
                 <h1>PLACEHOLDER FOR CALENDARS</h1>
             </div>
 
         </section>
 
         <template>
-            <v-footer light class="pa-3">
+            <v-footer light class="pa-3 ">
                 <v-spacer></v-spacer>
                 <div>© {{ new Date().getFullYear() }}</div>
             </v-footer>
@@ -150,7 +174,10 @@ export default {
             trip: "",
             items: "",
             seen: 'list',
-            styles: { height: "150px" }
+            styles: { height: "150px" },
+            tabs: ['tab-1', 'tab-2', 'tab-3'],
+            active: null,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
         };
     },
 
@@ -169,6 +196,9 @@ export default {
     methods: {
         setView(arg) {
             this.seen = arg;
+        },
+        next() {
+            this.active = this.tabs[(this.tabs.indexOf(this.active) + 1) % this.tabs.length]
         },
 
         //fix this 8/22/17

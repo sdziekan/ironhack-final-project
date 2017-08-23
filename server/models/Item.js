@@ -14,7 +14,7 @@ const ItemSchema = new Schema({
   },
   group: {
     type: String,
-    required: [true, "group is required"],
+    // required: [true, "group is required"],
     enum: ["Activities", "Lodging", "Transportation"]
   },
   type: {

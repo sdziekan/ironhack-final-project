@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const myApi = axios.create({
   baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api"
 });
@@ -27,12 +28,21 @@ function deleteItem(itemID) {
     return response.data
   }).catch(function (err) {
     return (err)
-  })
+  });
+};
+
+function createItem(fields) {
+  return myApi.post("/items/", fields).then(response => {
+    return response.data
+  }).catch(function (err) {
+    return (err)
+  });
 };
 
 export default {
   getTrip,
   getItem,
   getItems,
-  deleteItem
+  deleteItem,
+  createItem
 }
