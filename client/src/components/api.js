@@ -17,8 +17,8 @@ function getItems(tripID) {
   });
 };
 
-function getItem(tripID) {
-  return myApi.get("/trips/" + tripID + "/items/" + itemID).then(response => {
+function getItem(itemID) {
+  return myApi.get("/items/" + itemID).then(response => {
     return response.data;
   });
 };
@@ -47,11 +47,20 @@ function createTrip(fields) {
   });
 };
 
+function editItem(fields) {
+  return myApi.post("/items/" + fields.itemID, fields).then(response => {
+    return response.data
+  }).catch(function (err) {
+    return (err)
+  });
+};
+
 export default {
   getTrip,
   getItem,
   getItems,
   deleteItem,
   createItem,
-  createTrip
+  createTrip,
+  editItem
 }

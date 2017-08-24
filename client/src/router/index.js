@@ -7,6 +7,7 @@ import TripMap from "@/components/TripMap";
 import TripList from "@/components/TripList";
 import TripCalendar from "@/components/TripCalendar";
 import AddItem from "@/components/AddItem";
+import EditItem from "@/components/EditItem";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
       path: "/trips/additem/:tripID",
       name: "AddItem",
       component: AddItem
+    },
+    {
+      path: "/trips/edititem/:tripID/:itemID",
+      name: "EditItem",
+      component: EditItem
     }
 
   ]

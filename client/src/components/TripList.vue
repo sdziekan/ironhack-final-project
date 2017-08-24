@@ -1,21 +1,45 @@
 <template>
     <div>
-        <h3>Activities</h3>
+        </br>
+        <div class="trips-header">
+
+            <h2 class="trip-items-title">
+                TRIP ITEMS</h2>
+
+            <v-btn round primary class="btn-add" @click="toAddItem()">ADD ITEM</v-btn>
+            <v-btn round primary dark class="btn-view btn-list">List View</v-btn>
+            <v-btn round primary disabled class="btn-view">Map View</v-btn>
+            <v-btn round primary disabled class="btn-view">Calendar View</v-btn>
+        </div>
+        </br>
+        <h3 class="list-start">Activities</h3>
         <v-data-table v-bind:headers="headers" :items="filter(items, 'Activities')" hide-actions class="elevation-1">
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
                 <!-- <td class="text-xs-right">{{ props.item.startTime }}</td>
-                                                                                                                                        <td class="text-xs-right">{{ props.item.endTime }}</td> -->
+                                                                                                                                                                                                                                                            <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
                 <td class="text-xs-right">{{ props.item.status }}</td>
-                <td class="text-xs-right">{{ props.item.upVotes }}</td>
-                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.upVotes += 1" icon class="green--text">
+                            <v-icon>thumb_up</v-icon>
+                        </v-btn>
+                        {{ props.item.upVotes }}
+                    </v-flex>
+                </td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.downVotes -= 1" icon class="red--text">
+                            <v-icon>thumb_down</v-icon>
+                        </v-btn>{{ props.item.downVotes }}</v-flex>
+                </td>
                 <td class="text-xs-right">
                     <v-flex xs12 sm3>
-                        <v-btn icon class="blue--text">
+                        <v-btn @click="editItem(props.item)" icon class="blue--text">
                             <v-icon>edit</v-icon>
                         </v-btn>
                     </v-flex>
@@ -29,22 +53,34 @@
                 </td>
             </template>
         </v-data-table>
+        </br>
+        </br>
         <h3>Lodging</h3>
         <v-data-table v-bind:headers="headers" :items="filter(items, 'Lodging')" hide-actions class="elevation-1">
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
-                <!-- <td class="text-xs-right">{{ props.item.startTime }}</td> -->
-                <!-- <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
                 <td class="text-xs-right">{{ props.item.status }}</td>
-                <td class="text-xs-right">{{ props.item.upVotes }}</td>
-                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.upVotes += 1" icon class="green--text">
+                            <v-icon>thumb_up</v-icon>
+                        </v-btn>
+                        {{ props.item.upVotes }}
+                    </v-flex>
+                </td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.downVotes -= 1" icon class="red--text">
+                            <v-icon>thumb_down</v-icon>
+                        </v-btn>{{ props.item.downVotes }}</v-flex>
+                </td>
                 <td class="text-xs-right">
                     <v-flex xs12 sm3>
-                        <v-btn icon class="blue--text">
+                        <v-btn @click="editItem(props.item)" icon class="blue--text">
                             <v-icon>edit</v-icon>
                         </v-btn>
                     </v-flex>
@@ -58,22 +94,34 @@
                 </td>
             </template>
         </v-data-table>
+        </br>
+        </br>
         <h3>Transportation</h3>
         <v-data-table v-bind:headers="headers" :items="filter(items, 'Transportation')" hide-actions class="elevation-1">
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
-                <!-- <td class="text-xs-right">{{ props.item.startTime }}</td> -->
-                <!-- <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
                 <td class="text-xs-right">{{ props.item.status }}</td>
-                <td class="text-xs-right">{{ props.item.upVotes }}</td>
-                <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.upVotes += 1" icon class="green--text">
+                            <v-icon>thumb_up</v-icon>
+                        </v-btn>
+                        {{ props.item.upVotes }}
+                    </v-flex>
+                </td>
+                <td class="text-xs-center">
+                    <v-flex>
+                        <v-btn v-on:click="props.item.downVotes -= 1" icon class="red--text">
+                            <v-icon>thumb_down</v-icon>
+                        </v-btn>{{ props.item.downVotes }}</v-flex>
+                </td>
                 <td class="text-xs-right">
                     <v-flex xs12 sm3>
-                        <v-btn icon class="blue--text">
+                        <v-btn @click="editItem(props.item)" icon class="blue--text">
                             <v-icon>edit</v-icon>
                         </v-btn>
                     </v-flex>
@@ -100,8 +148,6 @@ export default {
             headers: [
                 { text: 'Name', align: 'left', value: 'name' },
                 { text: 'Type', value: 'type' },
-                // { text: 'Start Time', value: 'startTime' },
-                // { text: 'End Time', value: 'endTime' },
                 { text: 'Location', value: 'location' },
                 { text: 'Cost', value: 'cost' },
                 { text: 'Website', value: 'url' },
@@ -131,7 +177,19 @@ export default {
                 response.data;
                 this.items.splice(i, 1)
             })
-        }
+        },
+        toAddItem() {
+            if (this.trip) {
+                this.$router.push({ name: 'AddItem', params: { tripID: this.trip._id } })
+            }
+        },
+        editItem(item) {
+            let itemID = item._id;
+            let i = this.items.indexOf(item)
+
+            this.$router.push({ name: "EditItem", params: { tripID: this.trip._id, itemID: itemID } })
+
+        },
 
     },
     computed: {
@@ -231,5 +289,9 @@ a {
     height: 600px;
     margin: 0 auto;
     background: gray;
+}
+
+.list-start {
+    clear: both;
 }
 </style>

@@ -125,7 +125,6 @@
             </div>
             <div id="map-view " v-if="seen==='map' ">
                 <h1>PLACEHOLDER FOR MAPS</h1>
-                <!-- <div class="google-map " :id="mapName "></div> -->
             </div>
 
             <div id="calendar-view " v-if="seen==='calendar' ">
@@ -172,6 +171,11 @@ export default {
     methods: {
         setView(arg) {
             this.seen = arg;
+        },
+        toAddItem() {
+            if (this.trip) {
+                this.$router.push({ name: 'AddItem', params: { tripID: this.trip._id } })
+            }
         },
         deleteItemWithIndex(index) {
             let itemID = this.items[index]._id;

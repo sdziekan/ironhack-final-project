@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>{{ message }}</h1>
         <v-card class="green lighten-2 elevation-15 form-card">
             <v-card-text>
                 <v-container fluid>
@@ -33,7 +34,7 @@
                             <v-subheader class="input-label">Location: </v-subheader>
                         </v-flex>
                         <v-flex xs8>
-                            <v-text-field v-model="location" name="input-1" label="Address" id="testing"></v-text-field>
+                            <v-text-field v-model="location" name="input-1" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
@@ -62,35 +63,35 @@
                     </v-layout>
 
                     <!-- <v-layout row>
-                                    <v-flex xs4>
-                                        <v-subheader class="input-label">Start Date & Time: </v-subheader>
-                                    </v-flex>
-                                    <v-flex md6 lg4>
-                                         <v-date-picker v-model="startDate"></v-date-picker> 
-                                    </v-flex>
-                                    <v-flex md6 lg4>
-                                         <v-time-picker v-model="startTime"></v-time-picker> 
-                                    </v-flex>
-                                </v-layout>
-                                <v-layout row>
-                                    <v-flex xs4>
-                                        <v-subheader class="input-label">End Date & Time: </v-subheader>
-                                    </v-flex>
-                                    <v-flex md6 lg4>
-                                         <v-date-picker v-model="endDate"></v-date-picker> 
-                                    </v-flex>
+                                                                                                                <v-flex xs4>
+                                                                                                                    <v-subheader class="input-label">Start Date & Time: </v-subheader>
+                                                                                                                </v-flex>
+                                                                                                                <v-flex md6 lg4>
+                                                                                                                     <v-date-picker v-model="startDate"></v-date-picker> 
+                                                                                                                </v-flex>
+                                                                                                                <v-flex md6 lg4>
+                                                                                                                     <v-time-picker v-model="startTime"></v-time-picker> 
+                                                                                                                </v-flex>
+                                                                                                            </v-layout>
+                                                                                                            <v-layout row>
+                                                                                                                <v-flex xs4>
+                                                                                                                    <v-subheader class="input-label">End Date & Time: </v-subheader>
+                                                                                                                </v-flex>
+                                                                                                                <v-flex md6 lg4>
+                                                                                                                     <v-date-picker v-model="endDate"></v-date-picker> 
+                                                                                                                </v-flex>
 
-                                    <v-flex md6 lg4>
-                                         <v-time-picker v-model="endTime"></v-time-picker> 
-                                    </v-flex>
-                                </v-layout> -->
+                                                                                                                <v-flex md6 lg4>
+                                                                                                                     <v-time-picker v-model="endTime"></v-time-picker> 
+                                                                                                                </v-flex>
+                                                                                                            </v-layout> -->
                 </v-container>
                 <v-container>
                     <v-flex>
                         <v-card height="80px" offset-xs3 class="elevation-2 white">
                             <v-card-text>
                                 <div>
-                                    <v-btn light @click="submitButton()">Submit</v-btn>
+                                    <v-btn light @click="submitEditButton()">Submit</v-btn>
 
                                     <v-btn light @click="returnToTrip()">Cancel</v-btn>
                                 </div>
@@ -114,8 +115,8 @@ import api from "./api";
 export default {
     data() {
         return {
-            message: "TRIP INFORMATION",
-            items: [],
+            message: "Edit Yo' Shit",
+            item: {},
             trip: null,
             name: "",
             group: {},
@@ -161,28 +162,23 @@ export default {
             this.trip = trip;
         });
 
-        api.getItems(this.$route.params.tripID).then(items => {
-            this.items = items;
+        api.getItem(this.$route.params.itemID).then(item => {
+            this.item = item;
+            this.name = item.name;
+            this.group = item.group;
+            this.type = item.type;
+            this.location = item.location;
+            this.url = item.url;
+            this.status = item.status;
+            this.cost = item.cost;
+            this.itemID = item._id
         });
+
+
 
 
     },
     methods: {
-        setView(arg) {
-            this.seen = arg;
-        },
-
-        //fix this 8/22/17
-        deleteItemWithIndex(index) {
-            let itemID = this.items[index]._id;
-
-            this.items.splice(index, 1); // To update this.items in Vue application
-
-            // To update the information on the backend
-            api.deleteItem(itemID).then(response => {
-                response.data;
-            });
-        },
 
         returnToTrip() {
             if (this.trip) {
@@ -190,34 +186,32 @@ export default {
             }
         },
 
-        createNewItem() {
+        editItem() {
             const fields = {
                 trip: this.trip._id,
                 name: this.name,
                 group: this.group.text,
                 type: this.type.text,
-                startDate: this.startDate,
-                startTime: this.startTime,
-                endDate: this.endDate,
-                endTime: this.endTime,
                 location: this.location,
                 cost: this.cost,
                 url: this.url,
-                status: this.status.text
+                status: this.status.text,
+                itemID: this.itemID
             }
-            return api.createItem(fields);
+
+            return api.editItem(fields);
         },
 
-        submitButton() {
-            this.createNewItem().then(() => {
+        submitEditButton() {
+            this.editItem().then(() => {
                 this.returnToTrip()
             }).catch(err => {
-                alert("Error creating new item. Please try again")
+                alert("Error editing item. Please try again")
             })
         }
+
     }
 }
-
 
 </script>
 
