@@ -1,6 +1,23 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
+        </br>
+        <v-layout>
+            <v-flex xs8 sm6 offset-sm3>
+                <v-card>
+                    <v-card-media class="elevation-5" height="400px"><img class="header-img" src="../assets/hiker-on-globe.png">
+                    </v-card-media>
+                    <v-card-title primary-title>
+                        <div>
+                            <h2>{{ message }}</h2>
+
+                        </div>
+                    </v-card-title>
+
+                </v-card>
+            </v-flex>
+        </v-layout>
+        </br>
+        </br>
         <v-card class="green lighten-2 elevation-15 form-card">
             <v-card-text>
                 <v-container fluid>
@@ -63,28 +80,28 @@
                     </v-layout>
 
                     <!-- <v-layout row>
-                                                                                                                <v-flex xs4>
-                                                                                                                    <v-subheader class="input-label">Start Date & Time: </v-subheader>
-                                                                                                                </v-flex>
-                                                                                                                <v-flex md6 lg4>
-                                                                                                                     <v-date-picker v-model="startDate"></v-date-picker> 
-                                                                                                                </v-flex>
-                                                                                                                <v-flex md6 lg4>
-                                                                                                                     <v-time-picker v-model="startTime"></v-time-picker> 
-                                                                                                                </v-flex>
-                                                                                                            </v-layout>
-                                                                                                            <v-layout row>
-                                                                                                                <v-flex xs4>
-                                                                                                                    <v-subheader class="input-label">End Date & Time: </v-subheader>
-                                                                                                                </v-flex>
-                                                                                                                <v-flex md6 lg4>
-                                                                                                                     <v-date-picker v-model="endDate"></v-date-picker> 
-                                                                                                                </v-flex>
+                                                                                                                                        <v-flex xs4>
+                                                                                                                                            <v-subheader class="input-label">Start Date & Time: </v-subheader>
+                                                                                                                                        </v-flex>
+                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                             <v-date-picker v-model="startDate"></v-date-picker> 
+                                                                                                                                        </v-flex>
+                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                             <v-time-picker v-model="startTime"></v-time-picker> 
+                                                                                                                                        </v-flex>
+                                                                                                                                    </v-layout>
+                                                                                                                                    <v-layout row>
+                                                                                                                                        <v-flex xs4>
+                                                                                                                                            <v-subheader class="input-label">End Date & Time: </v-subheader>
+                                                                                                                                        </v-flex>
+                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                             <v-date-picker v-model="endDate"></v-date-picker> 
+                                                                                                                                        </v-flex>
 
-                                                                                                                <v-flex md6 lg4>
-                                                                                                                     <v-time-picker v-model="endTime"></v-time-picker> 
-                                                                                                                </v-flex>
-                                                                                                            </v-layout> -->
+                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                             <v-time-picker v-model="endTime"></v-time-picker> 
+                                                                                                                                        </v-flex>
+                                                                                                                                    </v-layout> -->
                 </v-container>
                 <v-container>
                     <v-flex>
@@ -115,7 +132,7 @@ import api from "./api";
 export default {
     data() {
         return {
-            message: "Edit Yo' Shit",
+            message: "Edit Your Element Here",
             item: {},
             trip: null,
             name: "",
@@ -220,6 +237,7 @@ export default {
 h1,
 h2 {
     font-weight: normal;
+    text-align: center;
 }
 
 ul {
@@ -299,7 +317,6 @@ a {
     padding-top: 50px;
 }
 
-
 input,
 select {
     border: 1px solid black;
@@ -308,5 +325,13 @@ select {
 
 .form-card {
     border-radius: 15px;
+}
+
+.header-img {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
 }
 </style>

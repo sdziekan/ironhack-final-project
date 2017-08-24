@@ -1,9 +1,25 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 class="h1-title">{{ msg }}</h1>
 
-    <h2>CREATE A NEW TRIP</h2>
-    <h3>It's simple! Just enter a New Trip Name and your Email Address to get started</h3>
+    <h3 class="h3-title">It' s simple! Just enter a New Trip Name and your Email Address to get start ed
+    </h3>
+
+    <v-layout>
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card>
+          <v-card-media class="elevation-5" height="400px"><img class="header-img" src="../assets/hiker-on-globe.png">
+          </v-card-media>
+          <v-card-title primary-title>
+            <div>
+              <h2>CREATE A NEW TRIP</h2>
+
+            </div>
+          </v-card-title>
+
+        </v-card>
+      </v-flex>
+    </v-layout>
 
     <v-container xs8 offset-xs2 fluid="fluid" class="text-xs-center">
       <v-card height="300px" class="form-create elevation-10 white">
@@ -43,7 +59,7 @@
         <v-card-text>
           <v-layout>
             <v-flex>
-              <h3>The Problems:</h3>
+              <h3 class="list-header">The Problems:</h3>
               <ul class='problems'>
                 <li>There is no one-stop application for trip planning with friends and family</li>
                 <li>Common trip planning involves communications across emails, shared documents, text messages, custom maps</li>
@@ -54,7 +70,9 @@
                   <strong>Planning can be so stressful. By the time your trips starts, you might not even want to see the people that you are traveling with!</strong>
                 </li>
               </ul>
-              <h3>Finally there's a Solution:</h3>
+              </br>
+              </br>
+              <h3 class="list-header">Finally there's a Solution:</h3>
               <ul class='solutions'>
                 <li>One application to coordinate
                   <strong>ALL TRIP PLANNING!</strong>
@@ -124,6 +142,7 @@ export default {
 h1,
 h2 {
   font-weight: normal;
+  text-align: center;
 }
 
 .new-trip {
@@ -166,5 +185,27 @@ a {
 
 .form-create {
   border-radius: 15px;
+}
+
+.h1-title {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.h3-title {
+  text-align: center;
+  margin: 0 50px 25px;
+}
+
+.header-img {
+  height: 400px;
+  width: auto;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.list-header {
+  text-align: center;
 }
 </style>

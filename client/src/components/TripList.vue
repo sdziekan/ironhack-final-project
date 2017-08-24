@@ -1,16 +1,44 @@
 <template>
     <div>
         </br>
-        <div class="trips-header">
+        <v-layout>
+            <v-flex xs8 sm6 offset-sm3>
+                <v-card>
+                    <v-card-media class="elevation-5" height="400px"><img class="header-img" src="../assets/hiker-on-globe.png">
+                    </v-card-media>
+                    <v-card-title primary-title>
+                        <div>
+                            <h3 class="headline mb-0">{{ trip.name }}</h3>
+                            <div>
+                                <p class="headline-p">See below for all of the fun things you are planning to do on vacation!!!</p>
+                            </div>
+                        </div>
+                    </v-card-title>
+                    <v-card-actions>
+                        <v-btn round primary class="btn-add elevaton-5" @click="toAddItem()">ADD ITEM</v-btn>
 
-            <h2 class="trip-items-title">
-                TRIP ITEMS</h2>
-
-            <v-btn round primary class="btn-add" @click="toAddItem()">ADD ITEM</v-btn>
-            <v-btn round primary dark class="btn-view btn-list">List View</v-btn>
-            <v-btn round primary disabled class="btn-view">Map View</v-btn>
-            <v-btn round primary disabled class="btn-view">Calendar View</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        </br>
+        </br>
+        <div>
+            <v-layout row wrap>
+                <v-flex xs12>
+                    <v-card id="trips-header" dark class="accent elevation-7">
+                        <v-card-text>
+                            <h2>TRIP VIEWS
+                                <v-btn round primary dark class="btn-view btn-list">List View</v-btn>
+                                <v-btn round primary disabled class="btn-view responsive-btn">Map View</v-btn>
+                                <v-btn round primary disabled class="btn-view responsive-btn">Calendar View</v-btn>
+                            </h2>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
         </div>
+
         </br>
         <h3 class="list-start">Activities</h3>
         <v-data-table v-bind:headers="headers" :items="filter(items, 'Activities')" hide-actions class="elevation-1">
@@ -18,7 +46,7 @@
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
                 <!-- <td class="text-xs-right">{{ props.item.startTime }}</td>
-                                                                                                                                                                                                                                                            <td class="text-xs-right">{{ props.item.endTime }}</td> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
@@ -157,7 +185,8 @@ export default {
                 { text: 'Edit', value: 'coming soon' },
                 { text: 'Delete', value: 'coming soon' }
             ],
-            items: []
+            items: [],
+            trip: []
         }
     },
     methods: {
@@ -238,19 +267,29 @@ a {
 
 .trips-header {
     margin-top: 25px;
-    margin-right: 50px;
+    display: inline-block;
+}
+
+h3.headline {
+    text-align: center;
+}
+
+.headline-p {
+    text-align: center;
+    margin-top: 15px;
 }
 
 .trip-items-title {
     display: inline-block;
-    float: left;
-    margin-left: 15%;
+    text-align: center;
 }
 
 .btn-add {
-    float: left;
-    margin-top: 25px;
-    margin-left: 10px;
+    margin: 0 auto 15px;
+}
+
+.btn-views {
+    clear: both;
 }
 
 .btn-view {
@@ -284,14 +323,25 @@ a {
     clear: both;
 }
 
-.google-map {
-    width: 800px;
-    height: 600px;
-    margin: 0 auto;
-    background: gray;
-}
+
 
 .list-start {
     clear: both;
+}
+
+
+
+.header-img {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+}
+
+@media (max-width: 1024px) {
+    .responsive-btn {
+        display: none;
+    }
 }
 </style>
