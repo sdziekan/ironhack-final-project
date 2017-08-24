@@ -5,14 +5,28 @@
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
-                <td class="text-xs-right">{{ props.item.startTime }}</td>
-                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <!-- <td class="text-xs-right">{{ props.item.startTime }}</td>
+                                                                                                                                        <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
                 <td class="text-xs-right">{{ props.item.status }}</td>
                 <td class="text-xs-right">{{ props.item.upVotes }}</td>
                 <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn icon class="blue--text">
+                            <v-icon>edit</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn @click="deleteItemWithItem(props.item)" icon class="red--text">
+                            <v-icon>delete</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
             </template>
         </v-data-table>
         <h3>Lodging</h3>
@@ -28,6 +42,20 @@
                 <td class="text-xs-right">{{ props.item.status }}</td>
                 <td class="text-xs-right">{{ props.item.upVotes }}</td>
                 <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn icon class="blue--text">
+                            <v-icon>edit</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn @click="deleteItemWithItem(props.item)" icon class="red--text">
+                            <v-icon>delete</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
             </template>
         </v-data-table>
         <h3>Transportation</h3>
@@ -43,6 +71,20 @@
                 <td class="text-xs-right">{{ props.item.status }}</td>
                 <td class="text-xs-right">{{ props.item.upVotes }}</td>
                 <td class="text-xs-right">{{ props.item.downVotes }}</td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn icon class="blue--text">
+                            <v-icon>edit</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
+                <td class="text-xs-right">
+                    <v-flex xs12 sm3>
+                        <v-btn @click="deleteItemWithItem(props.item)" icon class="red--text">
+                            <v-icon>delete</v-icon>
+                        </v-btn>
+                    </v-flex>
+                </td>
             </template>
         </v-data-table>
     </div>
@@ -65,7 +107,9 @@ export default {
                 { text: 'Website', value: 'url' },
                 { text: 'Status', value: 'status' },
                 { text: 'Up Votes', value: 'upVotes' },
-                { text: 'Down Votes', value: 'downVotes' }
+                { text: 'Down Votes', value: 'downVotes' },
+                { text: 'Edit', value: 'coming soon' },
+                { text: 'Delete', value: 'coming soon' }
             ],
             items: []
         }
@@ -74,12 +118,21 @@ export default {
         filter: function(items, groupName) {
             var res = [];
             for (var i = 0; i < items.length; i++) {
-                // if (items[i].trip === this.$route.params.tripID)
                 if (items[i].group === groupName)
                     res.push(items[i]);
             }
             return res;
+        },
+        deleteItemWithItem(item) {
+            let itemID = item._id;
+            let i = this.items.indexOf(item)
+
+            api.deleteItem(itemID).then(response => {
+                response.data;
+                this.items.splice(i, 1)
+            })
         }
+
     },
     computed: {
         activityItems: function() {

@@ -28,28 +28,7 @@
                 <v-btn round primary class="btn-view" @click="setView('map')">Map View</v-btn>
                 <v-btn round primary class="btn-view" @click="setView('calendar')">Calendar View</v-btn>
             </div>
-            <v-tabs dark fixed icons centered>
-                <v-tabs-bar slot="activators" class="cyan">
-                    <v-tabs-slider class="yellow"></v-tabs-slider>
-                    <v-tabs-item href="#tab-1">
-                        <v-icon>list</v-icon>
-                        List
-                    </v-tabs-item>
-                    <v-tabs-item href="#tab-2">
-                        <v-icon>map</v-icon>
-                        Map
-                    </v-tabs-item>
-                    <v-tabs-item href="#tab-3">
-                        <v-icon>event</v-icon>
-                        Calendar
-                    </v-tabs-item>
-                </v-tabs-bar>
-                <v-tabs-content v-for="i in 3" :key="i" :id="'tab-' + i">
-                    <v-card flat>
-                        <v-card-text>{{ text }}</v-card-text>
-                    </v-card>
-                </v-tabs-content>
-            </v-tabs>
+
             <div id="list-view " v-if="seen==='list' ">
 
                 <!-- <div id="list-view "> -->
@@ -175,9 +154,6 @@ export default {
             items: "",
             seen: 'list',
             styles: { height: "150px" },
-            tabs: ['tab-1', 'tab-2', 'tab-3'],
-            active: null,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
         };
     },
 
@@ -197,16 +173,9 @@ export default {
         setView(arg) {
             this.seen = arg;
         },
-        next() {
-            this.active = this.tabs[(this.tabs.indexOf(this.active) + 1) % this.tabs.length]
-        },
-
-        //fix this 8/22/17
         deleteItemWithIndex(index) {
             let itemID = this.items[index]._id;
 
-
-            // To update the information on the backend
             api.deleteItem(itemID).then(response => {
                 response.data;
             }).then(() => { this.items.splice(index, 1) })

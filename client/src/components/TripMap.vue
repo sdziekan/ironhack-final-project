@@ -1,34 +1,34 @@
 <template>
     <div>
         <!-- 
-                    <h1>{{ message }}</h1>
+                        <h1>{{ message }}</h1>
 
-                    <section>
-                        <div class="tripsList">
-                            <h2>{{ trip.name }}</h2>
-                            <h4>Description :</h4>
-                            <p class="descrip">{{ trip.email }}</p>
-                            <p>
-                                {{ trip._id }}
-                            </p>
-                            <p>
-                                {{ trip.currency }}
-                            </p>
-                            <p>
-                                {{ trip.participants }}
-                            </p>
-                        </div>
-                        <div class="trips-header">
-                            <h2 class="trip-items-title">TRIP ITEMS</h2>
-                            <button class="btn-add">ADD ITEM</button>-->
+                        <section>
+                            <div class="tripsList">
+                                <h2>{{ trip.name }}</h2>
+                                <h4>Description :</h4>
+                                <p class="descrip">{{ trip.email }}</p>
+                                <p>
+                                    {{ trip._id }}
+                                </p>
+                                <p>
+                                    {{ trip.currency }}
+                                </p>
+                                <p>
+                                    {{ trip.participants }}
+                                </p>
+                            </div>
+                            <div class="trips-header">
+                                <h2 class="trip-items-title">TRIP ITEMS</h2>
+                                <button class="btn-add">ADD ITEM</button>-->
         <!-- <button class="btn-view btn-list" v-on:click="lseen = !lseen">List View</button> -->
         <!--<button class="btn-view btn-list">List View</button>
-                            <button class="btn-view">Map View</button>
-                            <button class="btn-view">Calendar View</button>
-                        </div>
+                                <button class="btn-view">Map View</button>
+                                <button class="btn-view">Calendar View</button>
+                            </div>
 
-                        <div id="map-view">
-                            <h1>PLACEHOLDER FOR MAPS</h1> -->
+                            <div id="map-view">
+                                <h1>PLACEHOLDER FOR MAPS</h1> -->
 
         <map :center="center" :zoom="7">
             <marker v-for="m in markers" :position.sync="m.position" :clickable="true" :draggable="true" @g-click="center=m.position">
@@ -37,32 +37,19 @@
 
         <!-- </div>
 
-                    </section> -->
+                        </section> -->
 
     </div>
 </template>
 
 <script>
 import api from "./api";
-import { load, Map, Marker } from 'vue-google-maps'
 
-
-load({
-    key: 'AIzaSyCy4p4HhAXNxGcL2ICMkf20LtUdEnw8VIk',
-    v: '3.24'
-}
-
-)
 
 export default {
     data() {
         return {
-            center: { lat: 10.0, lng: 10.0 },
-            markers: [{
-                position: { lat: 10.0, lng: 10.0 }
-            }, {
-                position: { lat: 11.0, lng: 11.0 }
-            }],
+
             message: "TRIP INFORMATION",
             trip: "",
             items: "",
