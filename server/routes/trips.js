@@ -68,4 +68,8 @@ router.get("/:tripID/items", (req, res, next) => {
     });
 });
 
+// router.get("/:tripID/items/:itemID", (req, res, next) => {
+//     res.json("Hello")
+// });
+
 module.exports = router;
