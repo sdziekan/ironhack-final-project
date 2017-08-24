@@ -39,10 +39,19 @@ function createItem(fields) {
   });
 };
 
+function createTrip(fields) {
+  return myApi.post("/trips/", fields).then(response => {
+    return response.data
+  }).catch(function (err) {
+    return (err)
+  });
+};
+
 export default {
   getTrip,
   getItem,
   getItems,
   deleteItem,
-  createItem
+  createItem,
+  createTrip
 }

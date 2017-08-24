@@ -110,7 +110,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import api from "./api";
 export default {
     data() {
@@ -187,13 +186,13 @@ export default {
 
         returnToTrip() {
             if (this.trip) {
-                this.$router.push({ name: 'Trip', params: { tripID: this.trip._id } })
+                this.$router.push({ name: 'TripList', params: { tripID: this.trip._id } })
             }
         },
 
         createNewItem() {
             const fields = {
-                trip: this.trip,
+                trip: this.trip._id,
                 name: this.name,
                 group: this.group.text,
                 type: this.type.text,

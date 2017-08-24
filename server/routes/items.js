@@ -26,7 +26,7 @@ router.get("/:itemID", (req, res, next) => {
 router.post("/", (req, res) => {
     var newItem = new Item(
         {
-            trip: "59946cc1fe21751ab54b4bef",
+            trip: req.body.trip,
             name: req.body.name,
             group: req.body.group,
             type: req.body.type,

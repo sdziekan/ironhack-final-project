@@ -20,8 +20,8 @@
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
-                <td class="text-xs-right">{{ props.item.startTime }}</td>
-                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <!-- <td class="text-xs-right">{{ props.item.startTime }}</td> -->
+                <!-- <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
@@ -35,8 +35,8 @@
             <template slot="items" scope="props">
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
-                <td class="text-xs-right">{{ props.item.startTime }}</td>
-                <td class="text-xs-right">{{ props.item.endTime }}</td>
+                <!-- <td class="text-xs-right">{{ props.item.startTime }}</td> -->
+                <!-- <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
@@ -50,7 +50,6 @@
 
 <script>
 
-import axios from "axios";
 import api from "./api";
 export default {
 
@@ -59,8 +58,8 @@ export default {
             headers: [
                 { text: 'Name', align: 'left', value: 'name' },
                 { text: 'Type', value: 'type' },
-                { text: 'Start Time', value: 'startTime' },
-                { text: 'End Time', value: 'endTime' },
+                // { text: 'Start Time', value: 'startTime' },
+                // { text: 'End Time', value: 'endTime' },
                 { text: 'Location', value: 'location' },
                 { text: 'Cost', value: 'cost' },
                 { text: 'Website', value: 'url' },
@@ -72,9 +71,10 @@ export default {
         }
     },
     methods: {
-        filter: function (items, groupName) {
+        filter: function(items, groupName) {
             var res = [];
             for (var i = 0; i < items.length; i++) {
+                // if (items[i].trip === this.$route.params.tripID)
                 if (items[i].group === groupName)
                     res.push(items[i]);
             }
@@ -82,7 +82,7 @@ export default {
         }
     },
     computed: {
-        activityItems: function () {
+        activityItems: function() {
             return this.items;
         }
     },

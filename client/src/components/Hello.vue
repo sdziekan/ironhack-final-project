@@ -4,39 +4,31 @@
 
     <h2>CREATE A NEW TRIP</h2>
     <h3>It's simple! Just enter a New Trip Name and your Email Address to get started</h3>
-    <!-- <ul class='new-trip'>
-          <li>New Trip Name:
-            <input type="text"> </li>
-          <li>Your Email:
-            <input type="text">
-          </li>
-          </br>
-        </ul> -->
 
-    <v-container fluid="fluid" class="text-xs-center">
-      <v-card height="300px" class="elevation-0 white">
+    <v-container xs8 offset-xs2 fluid="fluid" class="text-xs-center">
+      <v-card height="300px" class="form-create elevation-10 white">
         <v-card-text>
           <v-layout row>
-            <v-flex xs4>
+            <v-flex offset-xs1 xs3>
               <v-subheader>New Trip Name:</v-subheader>
             </v-flex>
-            <v-flex xs8>
-              <v-text-field name="input-1" label="New Trip Name" id="testing"></v-text-field>
+            <v-flex xs7>
+              <v-text-field v-model="name" name="input-1" label="new trip name" id="testing"></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs4>
+            <v-flex offset-xs1 xs3>
               <v-subheader>Your Email</v-subheader>
             </v-flex>
-            <v-flex xs8>
-              <v-text-field name="input-1" label="email" id="testing"></v-text-field>
+            <v-flex xs7>
+              <v-text-field v-model="email" name="input-1" label="email" id="testing"></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row wrap>
-            <v-flex xs12 sm6>
+            <v-flex xs2 offset-xs5>
 
               <div>
-                <v-btn light>LET'S PLAN A TRIP</v-btn>
+                <v-btn light @click="submitButton">LET'S PLAN A TRIP</v-btn>
               </div>
 
             </v-flex>
@@ -46,44 +38,85 @@
       </v-card>
     </v-container>
 
-    <div class='lower-bkgrd'>
-      <h2>The Problems:</h2>
-      <ul class='problems'>
-        <li>There is no one-stop application for trip planning with friends and family</li>
-        <li>Common trip planning involves communications across emails, shared documents, text messages, custom maps</li>
-        <li>Disorganization, lack of communication, hard to make decisions, hard to coordinate everything</li>
-        <li>You can view your trip plans in a list, a map or a calendar. But not all three at once</li>
-        <br>
-        <li>
-          <strong>Planning can be so stressful. By the time your trips starts, you might not even want to see the people that you are traveling with!</strong>
-        </li>
-      </ul>
-      <h2>Finally there's a Solution:</h2>
-      <ul class='solutions'>
-        <li>One application to coordinate
-          <strong>ALL TRIP PLANNING!</strong>
-        </li>
-        <li>Anyone can add options for
-          <strong>activities</strong>,
-          <strong>lodging</strong> or
-          <strong>transportation</strong>
-        </li>
-        <li>Everyone can upvote or downvote each option and write comments about what they think</li>
-        <li>Built in list view, map view and calendar view allow you to see you options in the best way</li>
-      </ul>
-    </div>
+    <v-container class='lower-bkgrd'>
+      <v-card fluid="fluid" class='lower-bkgrd xs10 offset-xs10 elevation-15 '>
+        <v-card-text>
+          <v-layout>
+            <v-flex>
+              <h3>The Problems:</h3>
+              <ul class='problems'>
+                <li>There is no one-stop application for trip planning with friends and family</li>
+                <li>Common trip planning involves communications across emails, shared documents, text messages, custom maps</li>
+                <li>Disorganization, lack of communication, hard to make decisions, hard to coordinate everything</li>
+                <li>You can view your trip plans in a list, a map or a calendar. But not all three at once</li>
+                <br>
+                <li>
+                  <strong>Planning can be so stressful. By the time your trips starts, you might not even want to see the people that you are traveling with!</strong>
+                </li>
+              </ul>
+              <h3>Finally there's a Solution:</h3>
+              <ul class='solutions'>
+                <li>One application to coordinate
+                  <strong>ALL TRIP PLANNING!</strong>
+                </li>
+                <li>Anyone can add options for
+                  <strong>activities</strong>,
+                  <strong>lodging</strong> or
+                  <strong>transportation</strong>
+                </li>
+                <li>Everyone can upvote or downvote each option and write comments about what they think</li>
+                <li>Built in list view, map view and calendar view allow you to see you options in the best way</li>
+              </ul>
+            </v-flex>
+
+          </v-layout>
+        </v-card-text>
+      </v-card>
+    </v-container>
+    </v-container>
   </div>
 </template>
 
 <script>
+import api from "./api";
+
 export default {
-  name: 'hello',
   data() {
     return {
-      msg: 'Welcome to K Trip Collaborative Trip Planner'
+      msg: 'Welcome to K Trip Collaborative Trip Planner',
+      name: null,
+      newTrip: null,
+      email: ""
+    }
+  },
+
+  methods: {
+    goToTrip() {
+      if (this.newTrip) {
+
+        this.$router.push({ name: 'TripList', params: { tripID: this.newTrip._id } })
+      }
+    },
+    createNewTrip() {
+      const fields = {
+        newTrip: this.newTrip,
+        name: this.name,
+        email: this.email
+      }
+      return api.createTrip(fields);
+    },
+    submitButton() {
+      this.createNewTrip().then((trip) => {
+        this.newTrip = trip
+        this.goToTrip()
+      }).catch(err => {
+
+        alert("Error creating new trip. Please try again")
+      })
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -124,11 +157,14 @@ h2 {
 }
 
 .lower-bkgrd {
-  background-color: #aec6cf;
-  width: 100%;
+  border-radius: 15px;
 }
 
 a {
   color: #42b983;
+}
+
+.form-create {
+  border-radius: 15px;
 }
 </style>

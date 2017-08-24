@@ -62,9 +62,9 @@ router.get("/list/:tripID", (req, res, next) => {
 
 router.get("/:tripID/items", (req, res, next) => {
     var tripId = req.params.tripID;
-    Item.find(tripId, (err, item) => {
+    Item.find({ trip: tripId }, (err, items) => {
         if (err) next(err);
-        else res.json(item);
+        else res.json(items);
     });
 });
 

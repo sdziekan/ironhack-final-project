@@ -205,12 +205,11 @@ export default {
         deleteItemWithIndex(index) {
             let itemID = this.items[index]._id;
 
-            this.items.splice(index, 1); // To update this.items in Vue application
 
             // To update the information on the backend
             api.deleteItem(itemID).then(response => {
                 response.data;
-            });
+            }).then(() => { this.items.splice(index, 1) })
         }
     }
 };
