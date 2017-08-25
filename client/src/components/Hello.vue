@@ -2,7 +2,7 @@
   <div class="hello">
     <h1 class="h1-title">{{ msg }}</h1>
 
-    <h3 class="h3-title">It' s simple! Just enter a New Trip Name and your Email Address to get start ed
+    <h3 class="h3-title">It' s simple! Just enter a New Trip Name and your Email Address to get started
     </h3>
 
     <v-layout>
