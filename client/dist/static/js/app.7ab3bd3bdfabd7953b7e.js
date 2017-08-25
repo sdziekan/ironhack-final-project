@@ -2953,7 +2953,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "h1-title"
   }, [_vm._v(_vm._s(_vm.msg))]), _vm._v(" "), _c('h3', {
     staticClass: "h3-title"
-  }, [_vm._v("It' s simple! Just enter a New Trip Name and your Email Address to get start ed\n  ")]), _vm._v(" "), _c('v-layout', [_c('v-flex', {
+  }, [_vm._v("It' s simple! Just enter a New Trip Name and your Email Address to get started\n  ")]), _vm._v(" "), _c('v-layout', [_c('v-flex', {
     attrs: {
       "xs12": "",
       "sm6": "",
@@ -3077,4 +3077,4 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 
 /***/ })
 ],[42]);
-//# sourceMappingURL=app.902e4277020acf0dabe5.js.map
+//# sourceMappingURL=app.7ab3bd3bdfabd7953b7e.js.map
