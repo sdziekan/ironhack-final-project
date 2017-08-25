@@ -6,15 +6,13 @@
     </h3>
 
     <v-layout>
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs8 offset-xs2 sm6 offset-sm3>
         <v-card>
           <v-card-media class="elevation-5" height="400px"><img class="header-img" src="../assets/hiker-on-globe.png">
           </v-card-media>
           <v-card-title primary-title>
-            <div>
-              <h2>CREATE A NEW TRIP</h2>
 
-            </div>
+            <h2 class="h2-responsive">CREATE A NEW TRIP</h2>
           </v-card-title>
 
         </v-card>
@@ -25,27 +23,19 @@
       <v-card height="300px" class="form-create elevation-10 white">
         <v-card-text>
           <v-layout row>
-            <v-flex offset-xs1 xs3>
-              <v-subheader>New Trip Name:</v-subheader>
-            </v-flex>
-            <v-flex xs7>
-              <v-text-field v-model="name" name="input-1" label="new trip name" id="testing"></v-text-field>
+            <v-flex xs6 offset-xs3>
+              <v-text-field v-model="name" name="name" label="new trip name"></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex offset-xs1 xs3>
-              <v-subheader>Your Email</v-subheader>
-            </v-flex>
-            <v-flex xs7>
-              <v-text-field v-model="email" name="input-1" label="email" id="testing"></v-text-field>
+            <v-flex xs6 offset-xs3>
+              <v-text-field v-model="email" name="email" label="email"></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row wrap>
-            <v-flex xs2 offset-xs5>
+            <v-flex xs3 offset-xs3>
 
-              <div>
-                <v-btn light @click="submitButton">LET'S PLAN A TRIP</v-btn>
-              </div>
+              <v-btn light @click="submitButton" class="input-font">LET'S PLAN A TRIP</v-btn>
 
             </v-flex>
 
@@ -141,6 +131,7 @@ export default {
 <style scoped>
 h1,
 h2 {
+  font-family: 'Roboto Slab', serif;
   font-weight: normal;
   text-align: center;
 }
@@ -185,9 +176,11 @@ a {
 
 .form-create {
   border-radius: 15px;
+  padding-top: 15px;
 }
 
 .h1-title {
+  font-family: 'Roboto Slab', serif;
   text-align: center;
   margin: 50px 0;
 }
@@ -207,5 +200,31 @@ a {
 
 .list-header {
   text-align: center;
+}
+
+.input-font {
+  font-size: 18pt;
+  overflow: hidden;
+}
+
+
+
+@media (max-width: 1024px) {
+  .h1-title {
+    font-size: 35pt;
+    font-family: 'Roboto Slab', serif;
+  }
+  .h2-responsive {
+    font-family: 'Roboto Slab', serif;
+    font-size: 20pt;
+    overflow: hidden;
+  }
+  .h3-title {
+    font-size: 22pt;
+  }
+  .input-font {
+    font-size: 12pt;
+    overflow: hidden;
+  }
 }
 </style>

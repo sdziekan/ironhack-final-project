@@ -2,13 +2,13 @@
     <div>
         </br>
         <v-layout>
-            <v-flex xs8 sm6 offset-sm3>
+            <v-flex xs8 offset-xs2 sm6 offset-sm3>
                 <v-card>
                     <v-card-media class="elevation-5" height="400px"><img class="header-img" src="../assets/hiker-on-globe.png">
                     </v-card-media>
-                    <v-card-title primary-title>
+                    <v-card-title primary-title class=" elevation-5">
                         <div>
-                            <h2>{{ message }}</h2>
+                            <h2 id="message">{{ message }}</h2>
 
                         </div>
                     </v-card-title>
@@ -19,104 +19,72 @@
         </br>
         </br>
 
-        <v-card class="green lighten-2 elevation-15 form-card">
+        <v-card class=" elevation-15 form-card">
             <v-card-text>
                 <v-container fluid>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Name: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-text-field v-model="name" name="input-1" label="Name" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Group: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-select :items="groupOptions" v-model="group" label="Select Group" single-line bottom></v-select>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Type: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-select :items="typeOptions" v-model="type" label="Select Type" single-line bottom></v-select>
                         </v-flex>
                     </v-layout>
-
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Location: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-text-field v-model="location" name="input-1" label="Address" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Website: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-text-field v-model="url" name="input-1" label="Website" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Cost: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-text-field v-model="cost" name="input-1" label="Cost" id="testing"></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row>
-                        <v-flex xs4>
-                            <v-subheader class="input-label">Status: </v-subheader>
-                        </v-flex>
-                        <v-flex xs8>
+                        <v-flex xs8 offset-xs2>
                             <v-select :items="statusOptions" v-model="status" label="Select Status" single-line bottom></v-select>
                         </v-flex>
                     </v-layout>
 
                     <!-- <v-layout row>
-                    <v-flex xs4>
-                        <v-subheader class="input-label">Start Date & Time: </v-subheader>
-                    </v-flex>
-                    <v-flex md6 lg4>
-                            <v-date-picker v-model="startDate"></v-date-picker> 
-                    </v-flex>
-                    <v-flex md6 lg4>
-                            <v-time-picker v-model="startTime"></v-time-picker> 
-                    </v-flex>
-                </v-layout>
-                <v-layout row>
-                    <v-flex xs4>
-                        <v-subheader class="input-label">End Date & Time: </v-subheader>
-                    </v-flex>
-                    <v-flex md6 lg4>
-                            <v-date-picker v-model="endDate"></v-date-picker> 
-                    </v-flex>
+                                                                                                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                                                                                                                <v-date-picker v-model="startDate"></v-date-picker> 
+                                                                                                                                                                                                                        </v-flex>
+                                                                                                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                                                                                                                <v-time-picker v-model="startTime"></v-time-picker> 
+                                                                                                                                                                                                                        </v-flex>
+                                                                                                                                                                                                                    </v-layout>
+                                                                                                                                                                                                                    <v-layout row>
+                                                                                                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                                                                                                                <v-date-picker v-model="endDate"></v-date-picker> 
+                                                                                                                                                                                                                        </v-flex>
 
-                    <v-flex md6 lg4>
-                            <v-time-picker v-model="endTime"></v-time-picker> 
-                    </v-flex>
-                </v-layout> -->
-                </v-container>
-                <v-container>
-                    <v-flex>
-                        <v-card height="80px" offset-xs3 class="elevation-2 white">
-                            <v-card-text>
-                                <div>
-                                    <v-btn light @click="submitButton()">Submit</v-btn>
+                                                                                                                                                                                                                        <v-flex md6 lg4>
+                                                                                                                                                                                                                                <v-time-picker v-model="endTime"></v-time-picker> 
+                                                                                                                                                                                                                        </v-flex>
+                                                                                                                                                                                                                    </v-layout> -->
 
-                                    <v-btn light @click="returnToTrip()">Cancel</v-btn>
-                                </div>
+                    <v-layout class="btn-layout" row align-end justify-end>
 
-                            </v-card-text>
-                        </v-card>
-                    </v-flex>
+                        <v-btn light @click="returnToTrip()">Cancel</v-btn>
+
+                        <v-btn primary @click="submitButton()">Submit</v-btn>
+
+                    </v-layout>
+
+                    </v-layout>
                 </v-container>
             </v-card-text>
         </v-card>
@@ -314,12 +282,7 @@ a {
     clear: both;
 }
 
-.google-map {
-    width: 800px;
-    height: 600px;
-    margin: 0 auto;
-    background: gray;
-}
+
 
 .ai {
     padding-top: 50px;
@@ -336,11 +299,27 @@ select {
     border-radius: 15px;
 }
 
+
 .header-img {
     height: 400px;
     width: auto;
     display: block;
     margin: auto;
     margin-top: 15px;
+}
+
+#message {
+    font-family: 'Roboto Slab', serif;
+}
+
+@media (max-width: 1024px) {
+    #message {
+        font-size: 20pt;
+    }
+}
+
+#btn-div {
+    position: absolute;
+    right: 10px;
 }
 </style>

@@ -26,7 +26,7 @@
         <div>
             <v-layout row wrap>
                 <v-flex xs12>
-                    <v-card id="trips-header" dark class="accent elevation-7">
+                    <v-card id="trips-header" class=" elevation-7">
                         <v-card-text>
                             <h2>TRIP VIEWS
                                 <v-btn round primary dark class="btn-view btn-list">List View</v-btn>
@@ -46,7 +46,7 @@
                 <td>{{ props.item.name }}</td>
                 <td class="text-xs-right">{{ props.item.type }}</td>
                 <!-- <td class="text-xs-right">{{ props.item.startTime }}</td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td class="text-xs-right">{{ props.item.endTime }}</td> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <td class="text-xs-right">{{ props.item.endTime }}</td> -->
                 <td class="text-xs-right">{{ props.item.location }}</td>
                 <td class="text-xs-right">{{ props.item.cost }}</td>
                 <td class="text-xs-right">{{ props.item.url }}</td>
